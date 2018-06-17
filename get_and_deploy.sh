@@ -21,3 +21,4 @@ mv /etc/3proxy/3proxy.cfg /etc/3proxy/3proxy.cfg.back
 mv 3proxy.cfg /etc/3proxy/3proxy.cfg
 /etc/init.d/3proxy start
 bash clear_logs.sh
+lsof -i
