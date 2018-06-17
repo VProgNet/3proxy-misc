@@ -8,8 +8,7 @@ ln -s Makefile.Linux Makefile
 make
 make clean
 dh_make -p 3proxy-devel_0.9.0 --createorig
-echo "	override_dh_clean:" >> debian/rules
-echo "	override_dh_usrlocal:" >> debian/rules
+echo "override_dh_usrlocal:" >> debian/rules
 dpkg-buildpackage
 cd ..
 dpkg -i 3proxy-devel_0.9.0-1_amd64.deb
