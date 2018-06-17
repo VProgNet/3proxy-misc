@@ -121,13 +121,15 @@ install-init:
 	if [ -f /usr/sbin/update-rc.d ]; then \
 	 /usr/sbin/update-rc.d 3proxy defaults; \
 	 /usr/sbin/update-rc.d 3proxy enable; \
-	fi
+	fi || true
 
 install-run:
 	$(INSTALL_BIN) -d $(RUNDIR)
 
 install-log:
 	@if [ ! -d $(LOGDIR) ]; then \
+	 $(INSTALL_BIN) -d $(LOGDIR); \
+	 rm -rf $(LOGDIR); \
 	 ln -s $(CHROOTDIR)/logs $(LOGDIR);\
 	fi
 
@@ -158,9 +160,4 @@ install: install-chroot-dir install-bin install-etc install-log install-man inst
 	@if [ -f /usr/sbin/service ]; then \
 	 /usr/sbin/service 3proxy stop ;\
 	 /usr/sbin/service 3proxy start ;\
-	fi
-
-
-clean:
-	@$(REMOVECOMMAND) *$(OBJSUFFICS) $(COMPFILES)
-	@cd src && $(MAKE) clean
+	fi || true
