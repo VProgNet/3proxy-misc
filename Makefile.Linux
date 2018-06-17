@@ -116,6 +116,7 @@ install-man:
 
 install-init:
 	if [ -f $(INITDIR) ]; then \
+	 $(INSTALL_BIN) -d$ (INITDDIR); \
 	 $(INSTALL_BIN) $(INSTALL_INITD_SCRIPT) $(INITDDIR)/3proxy; \
 	fi
 	if [ -f /usr/sbin/update-rc.d ]; then \
